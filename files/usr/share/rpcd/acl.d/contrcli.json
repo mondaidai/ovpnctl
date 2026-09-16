@@ -1,0 +1,15 @@
+{
+  "services/ovpnctl": {
+    "description": "Example App permissions",
+    "read": {
+      "api": [
+        "/ovpnctl/*"
+      ]
+    },
+    "write": {
+      "api": [
+        "/ovpnctl/*"
+      ]
+    }
+  }
+}

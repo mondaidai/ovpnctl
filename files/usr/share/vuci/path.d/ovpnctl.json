@@ -1,0 +1,3 @@
+[
+    { "/ovpnctl/{service_group}/{sid}": "services/ovpnctl" }
+]

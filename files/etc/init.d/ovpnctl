@@ -1,0 +1,22 @@
+#!/bin/sh /etc/rc.common
+
+START=95
+STOP=15
+USE_PROCD=1
+
+start_service() {
+	procd_open_instance
+	procd_set_param command /usr/bin/lua /usr/lib/lua/api/services/ovpnctl.lua --ubus
+	procd_set_param respawn
+	procd_close_instance
+}
+service_triggers() {
+	procd_add_reload_trigger "openvpn"
+}
+
+reload_service() {
+	if ! pgrep -f "ovpnctl.lua" >/dev/null; then
+		start
+	fi
+	# program exits if no servers detected, and updates servers automatically
+}
